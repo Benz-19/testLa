@@ -19,6 +19,6 @@ class UserController extends Controller
 
         $user = User::create($userInput);
         auth()->login($user);
-        return "Register controller method!!!";
+        return redirect("/");
     }
 }
