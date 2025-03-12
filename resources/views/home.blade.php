@@ -74,6 +74,12 @@
     background-color: pink;
     border-radius: 9px;
 }
+.all-post{
+    border: 2px solid black;
+    background-color: pink;
+    border-radius: 9px;
+    margin: 12px 0;
+}
 
 .new-post form{
     display: flex;
@@ -100,6 +106,14 @@
 .new-post button:hover{
 background-color:gray;
 }
+
+.rg-cont{
+    align-items: baseline;
+}
+
+.rg-cont p {
+    margin-right:10px;
+}
     </style>
 </head>
 
@@ -120,6 +134,26 @@ background-color:gray;
             <textarea name="body" id="" cols="30" rows="10" placeholder="body content..."></textarea>
             <button>Save Post</button>
         </form>
+    </section>
+
+    <section class="all-post">
+        <h2>All Posts</h2>
+        @foreach ($posts as $post)
+        <article style="background-color:gray; padding:10px; margin:10px; display:flex; flex-wrap:wrap; justify-content:space-between;">
+           <div>
+            <h3>{{$post['title']}}</h3>
+            {{$post['body']}}
+           </div>
+            <div class="rg-cont" style=" display:flex; flex-wrap:wrap; justify-content:space-between;">
+                <p><a href="/edit-post/{{$post->id}}">Edit</a></p>
+            <form action="/delete-post/{{$post->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button>Delete</button>
+            </form>
+            </div>
+        </article>
+        @endforeach
     </section>
     @else   
 
