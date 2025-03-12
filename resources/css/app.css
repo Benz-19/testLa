@@ -11,7 +11,8 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-.register {
+.register,
+.login {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -19,34 +20,40 @@
     border: 8px solid black;
 }
 
-.register h3 {
+.register h3,
+.login h3 {
     font-size: 20px;
     margin: 12px 0;
     text-decoration: underline;
 }
 
-.register form {
+.register form,
+.login form {
     display: flex;
     flex-direction: column;
     align-self: center;
 }
 
-.register form input {
+.register form input,
+.login form input {
     border: 1px solid black;
     width: fit-content;
     text-align: center;
     margin: 4px 0;
 }
 
-.register form label {
+.register form label,
+.login form label {
     margin-right: 10px;
 }
 
-.register form .mr {
+.register form .mr,
+.login form .mr {
     margin-right: 40px;
 }
 
-.register form button {
+.register form button,
+.login form button {
     border: 1px solid black;
     width: 100px;
     border-radius: 9px;
