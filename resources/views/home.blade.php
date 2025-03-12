@@ -68,6 +68,38 @@
 .login{
     margin:40px 0;
 }
+
+.new-post{
+    border: 2px solid black;
+    background-color: pink;
+    border-radius: 9px;
+}
+
+.new-post form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-items: center;
+}
+.new-post input,.new-post textarea{
+    margin: 12px 0;
+}
+.new-post button{
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    border-radius: 9px;
+    align-self: center;
+    margin: 12px 0;
+    padding: 4px;
+    align-self:center;
+    cursor: pointer;
+    transition: 0.7s all ease-in-out;
+}
+
+.new-post button:hover{
+background-color:gray;
+}
     </style>
 </head>
 
@@ -78,12 +110,23 @@
     @csrf
     <button type="submit" name="logout">logout</button>
     </form>
+
+    <section class="new-post">
+        <h2>Create a New Post</h2>
+        <form action="/create-post" method="post">
+            @csrf
+            <label for="">Title</label>
+            <input type="text" name ="title" placeholder="post title">
+            <textarea name="body" id="" cols="30" rows="10" placeholder="body content..."></textarea>
+            <button>Save Post</button>
+        </form>
+    </section>
     @else   
 
     {{-- REGISTER USER --}}
     <section class="register">
         <h3>Register a new User</h3>
-        <form action="{{ route('register') }}" method="POST">
+        <form action="/register" method="POST">
             @csrf
             <div>
                 <label for="">Usename:</label>
@@ -95,7 +138,7 @@
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" name="loginpassword" placeholder="password" autocomplete="off">
+                <input type="password" name="password" placeholder="password" autocomplete="off">
             </div>
             <button type="submit" name="submitBtn">Register</button>
         </form>
@@ -104,7 +147,7 @@
     {{-- USER LOGIN --}}
     <section class="login">
         <h3>Login</h3>
-        <form action="{{ route('login') }}" method="POST">
+        <form action="/login" method="POST">
             @csrf
             <div>
                 <label for="">Usename:</label>
@@ -112,7 +155,7 @@
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="password" autocomplete="off">
+                <input type="password" name="loginpassword" placeholder="password" autocomplete="off">
             </div>
             <button type="submit" name="loginBtn">Login</button>
         </form>

@@ -11,8 +11,8 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $userInput = $request->validate([
-            'name' => ['required', 'min:3', 'max:30', Rule::unique('users', 'name')],
-            'email' => ['required', 'email',  Rule::unique('users', 'email')],
+            'name' => ['required', 'min:3', 'max:30'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'min:2']
         ]);
         $userInput["password"] = bcrypt($userInput["password"]);
