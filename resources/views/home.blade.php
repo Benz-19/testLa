@@ -141,7 +141,7 @@ background-color:gray;
         @foreach ($posts as $post)
         <article style="background-color:gray; padding:10px; margin:10px; display:flex; flex-wrap:wrap; justify-content:space-between;">
            <div>
-            <h3>{{$post['title']}}</h3>
+            <h3>{{$post['title']}} by {{$post->user->name}}</h3>
             {{$post['body']}}
            </div>
             <div class="rg-cont" style=" display:flex; flex-wrap:wrap; justify-content:space-between;">
