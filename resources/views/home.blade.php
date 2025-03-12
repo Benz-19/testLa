@@ -95,7 +95,7 @@
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="password" autocomplete="off">
+                <input type="password" name="loginpassword" placeholder="password" autocomplete="off">
             </div>
             <button type="submit" name="submitBtn">Register</button>
         </form>

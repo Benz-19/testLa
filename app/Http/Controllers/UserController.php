@@ -31,14 +31,14 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $userInput = $request->validate([
-            'loginuser' => ['require', 'min:3'],
-            'loginpassword' => ['require', 'min:3'],
+            'loginname' => ['required'],
+            'loginpassword' => ['required']
         ]);
 
-        if (Rule::exists('users', $userInput['loginuser'])) {
-            return redirect('/');
-        } else {
-            return redirect('/');
+        if (auth()->attempt(['name' => $userInput['loginname'], 'password' => $userInput['loginpassword']])) {
+            $request->session()->regenerate();
         }
+
+        return redirect("/");
     }
 }
